@@ -9,5 +9,5 @@ public interface ConexionInterfaz {
 	/**
 	 * Conexion con la base de datos a partir de un .properties
 	 * */
-	public Connection conectar();
+	public Connection Conectar();
 }

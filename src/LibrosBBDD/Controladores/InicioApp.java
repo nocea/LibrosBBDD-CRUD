@@ -1,4 +1,8 @@
 package LibrosBBDD.Controladores;
+import java.sql.Connection;
+import java.util.ArrayList;
+
+import LibrosBBDD.Dtos.*;
 import LibrosBBDD.Servicios.*;
 
 public class InicioApp {
@@ -7,12 +11,15 @@ public class InicioApp {
 		int opcion;
 		InicioAppInterfaz inicioAppInterfaz=new InicioAppImplementacion();
 		ConexionInterfaz conexionInterfaz=new ConexionImplementacion();
+		CrudInterfaz crudInterfaz=new CrudImplementación();
+		ArrayList<Libros> listaLibros=new ArrayList<>();
+		try {
+		Connection conexion=conexionInterfaz.Conectar();
 		do {
 			opcion=inicioAppInterfaz.Menu();
 			switch(opcion) {
 			//Insertar libros
 			case 1:
-				System.out.println("Insertar libros");
 				break;
 			//Mostrar libros
 			case 2:
@@ -28,7 +35,9 @@ public class InicioApp {
 				break;
 			}
 		}while(opcion!=0);
-
+		}catch(Exception e) {
+			System.out.println("[ERROR-InicioApp]-Ha ocurrido al ejecutar la aplicación");
+		}
 	}
 
 }

@@ -1,5 +1,5 @@
 package LibrosBBDD.Servicios;
 
-public interface CRUDInterfaz {
+public interface CrudInterfaz {
 
 }
