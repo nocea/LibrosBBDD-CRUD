@@ -2,14 +2,15 @@ package LibrosBBDD.Servicios;
 
 import java.util.Scanner;
 
+
 public class InicioAppImplementacion implements InicioAppInterfaz {
 
 	@Override
 	public int Menu() {
 		int opcion;
 		Scanner scan=new Scanner(System.in);
-		System.out.println("1-->Registrar Libro/s");
-		System.out.println("2-->Mostrar Libro/s");
+		System.out.println("1-->Mostrar Todos Los Libros");
+		System.out.println("2-->Mostrar un Libro");
 		System.out.println("3-->Cambiar Dato/s de Libro/s");
 		System.out.println("4-->Eliminar Libro/s");
 		System.out.println("0-->Salir de la APP");
@@ -21,5 +22,4 @@ public class InicioAppImplementacion implements InicioAppInterfaz {
 			}while(opcion<0||opcion>4);
 		return opcion;
 	}
-
 }

@@ -1,42 +1,59 @@
 package LibrosBBDD.Controladores;
+
 import java.sql.Connection;
 import java.util.ArrayList;
-
 import LibrosBBDD.Dtos.*;
 import LibrosBBDD.Servicios.*;
+import java.util.Scanner;
 
 public class InicioApp {
 
 	public static void main(String[] args) {
 		int opcion;
-		InicioAppInterfaz inicioAppInterfaz=new InicioAppImplementacion();
-		ConexionInterfaz conexionInterfaz=new ConexionImplementacion();
-		CrudInterfaz crudInterfaz=new CrudImplementación();
-		ArrayList<Libros> listaLibros=new ArrayList<>();
+		long id_libro;
+		InicioAppInterfaz inicioAppInterfaz = new InicioAppImplementacion();
+		ConexionInterfaz conexionInterfaz = new ConexionImplementacion();
+		CrudInterfaz crudInterfaz = new CrudImplementación();
+		ArrayList<Libros> listaLibros = new ArrayList<>();
+		Scanner scan=new Scanner(System.in);
 		try {
-		Connection conexion=conexionInterfaz.Conectar();
-		do {
-			opcion=inicioAppInterfaz.Menu();
-			switch(opcion) {
-			//Insertar libros
-			case 1:
-				//Prueba Cambio rama Develop
-				break;
-			//Mostrar libros
-			case 2:
-				System.out.println("Mostrar libros");
-				break;
-			//Cambiar libros
-			case 3:
-				System.out.println("Cambiar libros");
-				break;
-			//Eliminar Libros
-			case 4:
-				System.out.println("Eliminar libros");
-				break;
-			}
-		}while(opcion!=0);
-		}catch(Exception e) {
+			do {
+				Connection conexion = conexionInterfaz.Conectar();
+				opcion = inicioAppInterfaz.Menu();
+				switch (opcion) {
+				case 1:// Mostrar todos los libros
+					if (conexion != null) {
+						listaLibros = crudInterfaz.SelectLibros(conexion);
+						for (int i = 0; i < listaLibros.size(); i++) {
+							System.out.println(listaLibros.get(i).toString());
+						}
+					}
+					break;
+				case 2:// Mostrar un solo libro
+						if(conexion!=null) {
+							listaLibros=crudInterfaz.SelectLibros(conexion);
+							for (int i = 0; i <listaLibros.size(); i++) {
+								System.out.println(listaLibros.get(i).getId_libro()+"."+listaLibros.get(i).getTitulo());
+							}
+						System.out.println("Introduce el id del libro que quiera mostrar:");
+						id_libro=scan.nextLong();
+						for (int i = 0; i <listaLibros.size(); i++) {
+							if(listaLibros.get(i).getId_libro()==id_libro)
+								System.out.println(listaLibros.get(i).toString());
+						}
+						}
+					break;
+				
+				case 3:// Cambiar libros
+					crudInterfaz.UpdateLibros(conexion);
+					break;
+				// Eliminar Libros
+				case 4:
+					System.out.println("Eliminar libros");
+					break;
+				}
+			} while (opcion != 0);
+		} catch (Exception e) {
 			System.out.println("[ERROR-InicioApp]-Ha ocurrido al ejecutar la aplicación");
 		}
 	}
