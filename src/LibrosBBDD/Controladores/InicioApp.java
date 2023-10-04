@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class InicioApp {
 
 	public static void main(String[] args) {
-		int opcion;
+		Integer opcion;
 		long id_libro;
 		InicioAppInterfaz inicioAppInterfaz = new InicioAppImplementacion();
 		ConexionInterfaz conexionInterfaz = new ConexionImplementacion();
@@ -43,13 +43,15 @@ public class InicioApp {
 						}
 						}
 					break;
-				
 				case 3:// Cambiar libros
 					crudInterfaz.UpdateLibros(conexion);
 					break;
 				// Eliminar Libros
 				case 4:
-					System.out.println("Eliminar libros");
+					crudInterfaz.InsertLibros(conexion);
+					break;
+				case 5:
+					System.out.println("Eliminar libro/s");
 					break;
 				}
 			} while (opcion != 0);

@@ -5,4 +5,5 @@ import LibrosBBDD.Dtos.*;
 public interface CrudInterfaz {
 	public ArrayList<Libros> SelectLibros(Connection conexion);
 	public void UpdateLibros(Connection conexion);
+	public void InsertLibros(Connection conexion);
 }
