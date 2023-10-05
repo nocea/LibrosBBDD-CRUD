@@ -42,6 +42,9 @@ public class ConexionImplementacion implements ConexionInterfaz {
 			return conexion;//Si entra aqui está null porque lo he inicializado null
 		}
 	}
+	/**
+	 * Método para obtener los datos de la conexión desde el archivo ".properties".
+	 * */
 	private String[] DatosConexion() {
 		//Array que devuelvo
 		String host,usuario="",contrasena="",baseDeDatos,url="",puerto;//Datos que quiero obtener del .properties

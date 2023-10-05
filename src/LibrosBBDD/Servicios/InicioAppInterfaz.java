@@ -1,4 +1,7 @@
 package LibrosBBDD.Servicios;
+
+import java.util.ArrayList;
+import LibrosBBDD.Dtos.*;
 /**
  * Clase que se usa como procedimiento de la aplicación.
  * */

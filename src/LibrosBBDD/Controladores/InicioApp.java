@@ -1,42 +1,51 @@
 package LibrosBBDD.Controladores;
+
 import java.sql.Connection;
 import java.util.ArrayList;
-
 import LibrosBBDD.Dtos.*;
 import LibrosBBDD.Servicios.*;
+import java.util.Scanner;
 
 public class InicioApp {
-
+/**
+ * Procedimiento de mi proyecto.
+ * @author Mario Nocea Cabrera
+ * */
 	public static void main(String[] args) {
-		int opcion;
-		InicioAppInterfaz inicioAppInterfaz=new InicioAppImplementacion();
-		ConexionInterfaz conexionInterfaz=new ConexionImplementacion();
-		CrudInterfaz crudInterfaz=new CrudImplementación();
-		ArrayList<Libros> listaLibros=new ArrayList<>();
+		//Declaraciones e Instancias de interfaces.
+		Integer opcion;
+		InicioAppInterfaz inicioAppInterfaz = new InicioAppImplementacion();
+		ConexionInterfaz conexionInterfaz = new ConexionImplementacion();
+		CrudInterfaz crudInterfaz = new CrudImplementación();
+		Scanner scan = new Scanner(System.in);
+		Connection conexion=null;
 		try {
-		Connection conexion=conexionInterfaz.Conectar();
-		do {
-			opcion=inicioAppInterfaz.Menu();
-			switch(opcion) {
-			//Insertar libros
-			case 1:
-				//Prueba Cambio rama Develop
-				break;
-			//Mostrar libros
-			case 2:
-				System.out.println("Mostrar libros");
-				break;
-			//Cambiar libros
-			case 3:
-				System.out.println("Cambiar libros");
-				break;
-			//Eliminar Libros
-			case 4:
-				System.out.println("Eliminar libros");
-				break;
-			}
-		}while(opcion!=0);
-		}catch(Exception e) {
+			do {
+				conexion = conexionInterfaz.Conectar();//Abro la conexión cada vez que vuelvo al menú
+				opcion = inicioAppInterfaz.Menu();//Muestro el menú
+				switch (opcion) {//Opciones del menú
+				case 1:
+					if (conexion != null) {
+						crudInterfaz.MostrarLibros(conexion);
+					}
+					break;
+				case 2:
+					if (conexion != null)
+						crudInterfaz.ActualizarLibros(conexion);
+					break;
+				case 3:
+					if (conexion != null)
+					crudInterfaz.CrearLibros(conexion);
+					break;
+				case 4:
+					if(conexion!=null)
+						crudInterfaz.BorrarLibros(conexion);
+					break;
+				}
+			} while (opcion != 0);
+			conexion.close();//La cierro antes de salir de la app
+			System.out.println("[INFO-InicioApp]-Ha salido de la aplicación");
+		} catch (Exception e) {
 			System.out.println("[ERROR-InicioApp]-Ha ocurrido al ejecutar la aplicación");
 		}
 	}

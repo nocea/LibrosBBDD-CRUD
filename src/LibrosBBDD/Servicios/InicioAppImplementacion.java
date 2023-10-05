@@ -2,15 +2,19 @@ package LibrosBBDD.Servicios;
 
 import java.util.Scanner;
 
-public class InicioAppImplementacion implements InicioAppInterfaz {
 
+public class InicioAppImplementacion implements InicioAppInterfaz {
+/**
+ * Método que muestra las opciones del menú principal 
+ * y devuelve un int con la opción seleccionada
+ * */
 	@Override
 	public int Menu() {
 		int opcion;
 		Scanner scan=new Scanner(System.in);
-		System.out.println("1-->Registrar Libro/s");
-		System.out.println("2-->Mostrar Libro/s");
-		System.out.println("3-->Cambiar Dato/s de Libro/s");
+		System.out.println("1-->Mostrar Libro/s");
+		System.out.println("2-->Cambiar Dato/s de Libro/s");
+		System.out.println("3-->Insertar Libro/s");
 		System.out.println("4-->Eliminar Libro/s");
 		System.out.println("0-->Salir de la APP");
 		System.out.print("Introduzca una de las siguientes opciones:");	
@@ -21,5 +25,4 @@ public class InicioAppImplementacion implements InicioAppInterfaz {
 			}while(opcion<0||opcion>4);
 		return opcion;
 	}
-
 }
