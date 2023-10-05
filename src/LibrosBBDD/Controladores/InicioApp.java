@@ -23,7 +23,7 @@ public class InicioApp {
 			do {
 				conexion = conexionInterfaz.Conectar();//Abro la conexión cada vez que vuelvo al menú
 				opcion = inicioAppInterfaz.Menu();//Muestro el menú
-				switch (opcion) {
+				switch (opcion) {//Opciones del menú
 				case 1:
 					if (conexion != null) {
 						crudInterfaz.MostrarLibros(conexion);

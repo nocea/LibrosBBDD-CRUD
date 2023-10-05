@@ -5,8 +5,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import LibrosBBDD.Dtos.Libros;
-
+/**
+ * Clase para pasar de dao a dto
+ * */
 public class ADto {
+	/**
+	 * Método que recibe el resultado de una query y lo pasa a una lista de libros.
+	 * @param resultado 
+	 * */
 	public ArrayList<Libros> ResultadosLibros(ResultSet resultado){
 		ArrayList<Libros> listaLibros=new ArrayList<>();
 		try {

@@ -4,7 +4,10 @@ import java.util.Scanner;
 
 
 public class InicioAppImplementacion implements InicioAppInterfaz {
-
+/**
+ * Método que muestra las opciones del menú principal 
+ * y devuelve un int con la opción seleccionada
+ * */
 	@Override
 	public int Menu() {
 		int opcion;
