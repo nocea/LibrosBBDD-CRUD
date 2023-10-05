@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import LibrosBBDD.Dtos.Libros;
 
 public class ADto {
-	public ArrayList<Libros> resultadosLibros(ResultSet resultado){
+	public ArrayList<Libros> ResultadosLibros(ResultSet resultado){
 		ArrayList<Libros> listaLibros=new ArrayList<>();
 		try {
 			while(resultado.next()) {

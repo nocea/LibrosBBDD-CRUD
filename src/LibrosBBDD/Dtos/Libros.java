@@ -3,7 +3,7 @@ package LibrosBBDD.Dtos;
  * Dto de la entidad Libros
  * */
 public class Libros {
-	
+	//Atributos
 	private long id_libro;
 	private String titulo;
 	private String autor;
@@ -18,9 +18,13 @@ public class Libros {
 		this.isbn = isbn;
 		this.edicion = edicion;
 	}
-	//Constructor vacío ya que al crear un constructor no se puede usar el vacío
-	public Libros() {
+	//Constructor para usar en el insert ya que no tengo que introducir "id_libro"
+	public Libros(String titulo, String autor, String isbn, int edicion) {
 		super();
+		this.titulo = titulo;
+		this.autor = autor;
+		this.isbn = isbn;
+		this.edicion = edicion;
 	}
 	//Getters & Setters
 	public long getId_libro() {
