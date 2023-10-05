@@ -14,11 +14,9 @@ public class InicioApp {
 	public static void main(String[] args) {
 		//Declaraciones e Instancias de interfaces.
 		Integer opcion;
-		long id_libro;
 		InicioAppInterfaz inicioAppInterfaz = new InicioAppImplementacion();
 		ConexionInterfaz conexionInterfaz = new ConexionImplementacion();
 		CrudInterfaz crudInterfaz = new CrudImplementación();
-		ArrayList<Libros> listaLibros = new ArrayList<>();
 		Scanner scan = new Scanner(System.in);
 		Connection conexion=null;
 		try {
@@ -32,21 +30,21 @@ public class InicioApp {
 					}
 					break;
 				case 2:
-					break;
-				case 3:
 					if (conexion != null)
 						crudInterfaz.ActualizarLibros(conexion);
 					break;
-				case 4:
+				case 3:
+					if (conexion != null)
 					crudInterfaz.CrearLibros(conexion);
 					break;
-				case 5:
+				case 4:
 					if(conexion!=null)
 						crudInterfaz.BorrarLibros(conexion);
 					break;
 				}
 			} while (opcion != 0);
 			conexion.close();//La cierro antes de salir de la app
+			System.out.println("[INFO-InicioApp]-Ha salido de la aplicación");
 		} catch (Exception e) {
 			System.out.println("[ERROR-InicioApp]-Ha ocurrido al ejecutar la aplicación");
 		}
